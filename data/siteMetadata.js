@@ -7,7 +7,7 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system',
   siteUrl: 'https://blog.woodhamssoftware.com',
-  siteRepo: 'https://github.com/robbiewoodhams1/tailwind-nextjs-starter-blog',
+  siteRepo: 'https://github.com/robbiewoodhams1/woodhams-software-blog',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   //socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
   email: 'robbiewoodhams643@gmail.com',
