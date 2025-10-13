@@ -1,0 +1,101 @@
+---
+title: How to create a website / web app
+date: '2025-10-13'
+tags: ['web app', 'website', 'nextjs', 'how to']
+draft: false
+summary: How to create a website / web app using next.js
+---
+
+# 1.0 Prerequisites
+
+Before you can create a nextjs project you need to install Node.js.
+
+### 1.1 Double Check
+
+To check if you have node already installed run these commands in your terminal first:
+
+```bash
+node -v
+npm -v
+```
+
+- If you get versions for example something like v18.17.0 and 10.2.0, you’re good to go part 2.0.
+
+- If you get errors continue below to 1.2.
+
+### 1.2 No Node
+
+If do not have node, install Node.js from https://nodejs.org
+
+# 2.0 Create a NextJS project
+
+First go to the folder you want your app to be located. Do not worry about creating a new folder for it, it will automatically create one. For example I want it to be saved here C:Projects. To get there in terminal use the cd .. to go back a directory and then cd Projects to enter.
+
+```
+C:\Users\Robbie> cd ..
+C:\Users> cd ..
+C:\>cd projects
+C:\Projects>
+```
+
+### 2.1 Initialise the App
+
+With the terminal in the right directory run this command:
+
+```
+C:\Projects> npx create-next-app@latest
+```
+
+### 2.2 Questions Asked
+
+NextJS will ask some questions about your app, they are explained briefly here below:
+
+- √ What is your project named? ... ExampleProjectName
+
+This will be the name of your project and the folder that it will be in.
+
+- √ Would you like to use TypeScript? ... No / Yes
+
+This is the language you will use. Yes for TypeScript, no for JavaScript. You will want to use TypeScript.
+
+- √ Would you like to use ESLint? ... No / Yes
+
+This is a linting package that keeps code consistent and prevents bugs. You will want to have it.
+
+- √ Would you like to use Tailwind CSS? ... No / Yes
+
+This is how you style your frontend. You will want to have it.
+
+- √ Would you like your code inside a `src/` directory? ... No / Yes
+
+This is asking if you want your code inside another folder called src inside the ExampleProjectName folder. This is personal preferance, I press no.
+
+- √ Would you like to use App Router? (recommended) ... No / Yes
+
+This ensures every file inside the pages/ folder becomes a route automatically, so you don't need extra setup when changing pages. You will want this.
+
+- √ Would you like to use Turbopack for `next dev`? ... No / Yes
+
+This speeds up the local development experience. If you are new it will be fine to have, if in doubt press no.
+
+- √ Would you like to customize the import alias (`@/*` by default)? ... No / Yes
+
+This adds a custom import alias for your project. The default is fine for now press no.
+
+### 2.3 Run the app in development
+
+To run your first NextJS project follow these commands:
+
+```
+C:\Projects> cd ExampleProjectName
+C:\Projects\ExampleProjectName> npm run dev
+```
+
+### 2.4 Run the app for production
+
+To test your app for production follow these commands:
+
+```
+C:\Projects\ExampleProjectName> npm build
+C:\Projects\ExampleProjectName> npm start
+```
