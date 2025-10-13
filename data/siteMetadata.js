@@ -16,12 +16,13 @@ const siteMetadata = {
   // twitter: 'https://twitter.com/Twitter',
   //facebook: 'https://facebook.com',
   //youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
+  linkedin:
+    'https://www.linkedin.com/in/robbie-woodhams-026135285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   //threads: 'https://www.threads.net',
-  instagram: 'https://www.instagram.com',
+  instagram: 'https://www.instagram.com/robbie_woodhams',
   //medium: 'https://medium.com',
   //bluesky: 'https://bsky.app/',
-  locale: 'en-US',
+  locale: 'en-GB',
   // set to true if you want a navbar fixed to the top
   stickyNav: false,
   analytics: {
