@@ -10,9 +10,9 @@ summary: How to create a mobile app using React Native on Android
 
 In this tutorial we will cover how to make a mobile app using React Native. React Native is a cross-platform framework that uses JavaScript, so you can have your app on iOS and Android with one codebase. In subsequent tutorials we will go through hosting on Google Play and App Store, styling and features, however each mobile app no matter how big or small begins this way when using React Native. Lets get started.
 
-# 2. System Requirements
+# 1. System Requirements
 
-### 2.1 Core Versions
+### 1.1 Core Versions
 
 | Tool    | Version |
 | ------- | ------- |
@@ -20,7 +20,7 @@ In this tutorial we will cover how to make a mobile app using React Native. Reac
 | Node.js | 20.11.1 |
 | npm     | 10.9.2  |
 
-### 2.2 Android Config
+### 1.2 Android Config
 
 | Setting    | Version       |
 | ---------- | ------------- |
@@ -33,9 +33,9 @@ In this tutorial we will cover how to make a mobile app using React Native. Reac
 | Kotlin     | 2.0.21        |
 | Hermes     | true          |
 
-# 3. Installations
+# 2. Installations
 
-### 3.1 Install Node.js
+### 2.1 Install Node.js
 
 Download and install Node.js (LTS) from: https://nodejs.org
 
@@ -47,7 +47,7 @@ node -v
 npm -v
 ```
 
-### 3.2 Install Java Development Kit (JDK)
+### 2.2 Install Java Development Kit (JDK)
 
 Download Java 17 (LTS) from: https://adoptium.net
 
@@ -59,7 +59,7 @@ java -version
 
 If it says something like openjdk 17.0.14, you’re good.
 
-### 3.3 Install Android Studio
+### 2.3 Install Android Studio
 
 Download from: https://developer.android.com/studio
 
@@ -89,7 +89,7 @@ Under SDK Tools, ensure these are checked:
 
 Then click Apply → OK to download everything.
 
-### 3.4 Set Up Environment Variables
+### 2.4 Set Up Environment Variables
 
 Press Start, search for “Edit the system environment variables”, and open it.
 
@@ -114,11 +114,11 @@ adb --version
 
 If it works, your paths are correct.
 
-# 4. Create a New React Native App
+# 3. Create a New React Native App
 
 Open PowerShell or Command Prompt in your project folder.
 
-### 4.1 Create project
+### 3.1 Create project
 
 npx @react-native-community/cli@latest init AppName
 
@@ -126,11 +126,11 @@ To create a specific version:
 
 npx @react-native-community/cli init AppName --version 0.79.2
 
-# 5. Configure Android Project Versions
+# 4. Configure Android Project Versions
 
 Open the folder in VS Code or Android Studio.
 
-### 5.1 Edit Gradle settings
+### 4.1 Edit Gradle settings
 
 Open: android/build.gradle
 
@@ -147,7 +147,7 @@ ext {
 }
 ```
 
-### 5.2 Update Gradle wrapper
+### 4.2 Update Gradle wrapper
 
 Open: android/gradle/wrapper/gradle-wrapper.properties
 
@@ -157,7 +157,7 @@ Replace:
 distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip
 ```
 
-# 6. Running the App
+# 5. Running the App
 
 ### Option 1: Physical Android Device
 
@@ -204,9 +204,9 @@ In your terminal, run:
 npm run android
 ```
 
-# 7. Common Issues & Fixes
+# 6. Common Issues & Fixes
 
-### 7.1 “Unable to load script from metro server” error
+### 6.1 “Unable to load script from metro server” error
 
 Fix:
 
@@ -214,14 +214,14 @@ Fix:
 adb reverse tcp:8081 tcp:8081
 ```
 
-### 7.2 Max Path Length on Windows
+### 6.2 Max Path Length on Windows
 
 Windows has a 260-character path limit.
 Move your project to a shallower path like:
 
 C:/Projects/MyApp
 
-### 7.3 Gradle Dependency Conflicts
+### 6.3 Gradle Dependency Conflicts
 
 Clean and rebuild:
 

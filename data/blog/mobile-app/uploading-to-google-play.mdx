@@ -1,0 +1,187 @@
+---
+title: How to upload a mobile app to Google Play
+date: '2025-10-16'
+tags: ['Mobile App', 'React-Native', 'How To', 'Google Play']
+draft: false
+summary: How to upload a mobile app to Google Play with react native
+---
+
+# Overview
+
+In this tutorial we will cover how to upload a mobile app to Google Play with react native. Lets get started.
+
+# 1.0 Prerequisites
+
+Before you can upload a mobile app to Google Play you first need an app to upload. Follow my previous tutorial on how to set that up [here](https://blog.woodhamssoftware.com/blog/mobile-app/create-mobile-app).
+
+# 2. Installation and Setup Steps
+
+## 2.1 Generate your keystore
+
+```
+keytool -genkeypair -v -keystore AppName-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias AppName
+```
+
+**Note: AppName here is used as a placeholder you can change it to anything you want**
+
+You’ll be prompted to enter:
+
+- A **keystore password** (write it down)
+- Your **name, organisation, etc.**
+- A **key password** (you can use the same as the keystore password)
+
+This will generate a file called `AppName-release-key.jks`.
+
+## 2.2 Place the Keystore File
+
+Move `AppName-release-key.jks` into your project’s `android/app` directory.
+
+### 2.3 Configure Gradle for Signing
+
+#### 2.3.1 Add this at the bottom of android/gradle.properties
+
+```
+MYAPP_UPLOAD_STORE_FILE=AppName-release-key.jks
+MYAPP_UPLOAD_KEY_ALIAS=AppName
+MYAPP_UPLOAD_STORE_PASSWORD=your_keystore_password
+MYAPP_UPLOAD_KEY_PASSWORD=your_key_password
+```
+
+Don't commit this file to GitHub if it has your passwords.
+
+#### 2.3.1.1 Add to .gitignore
+
+```
+android/gradle.properties
+```
+
+### 2.3.2 Find the `android { ... }` block and inside it, add or update in android/app/build.gradle:
+
+```
+signingConfigs {
+    release {
+        storeFile file(MYAPP_UPLOAD_STORE_FILE)
+        storePassword MYAPP_UPLOAD_STORE_PASSWORD
+        keyAlias MYAPP_UPLOAD_KEY_ALIAS
+        keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+    }
+}
+
+buildTypes {
+    release {
+        signingConfig signingConfigs.release
+        shrinkResources true
+        minifyEnabled true
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+}
+```
+
+## 2.4 Build a Signed APK or AAB
+
+### For APK (for your phone):
+
+```
+cd android ./gradlew assembleRelease
+```
+
+APK will be in:
+
+```
+android/app/build/outputs/apk/release/app-release.apk
+```
+
+To install:
+
+```
+adb install -r android/app/build/outputs/apk/release/app-release.apk
+```
+
+### For AAB (for Play Store):
+
+```
+./gradlew bundleRelease
+```
+
+AAB will be in:
+
+```
+android/app/build/outputs/bundle/release/app-release.aab
+```
+
+# 3. Google Play Store
+
+## 3.1 Create a new App
+
+Now that you have the aab file go to the Google Play Console, sign up or in, then go to All Apps and click Create new app.
+
+https://play.google.com/console/signup
+
+**Note: There is a one time purchase of £25 to become a developer for Google Play**
+
+## 3.2 Console Questions
+
+Before uploading your app you will be asked these questions:
+
+- An app name
+- Short description, 80 characters
+- Full description, 4000 characters
+
+**Use ChatGPT to make these for you**
+
+- A website
+
+**For the website you can quickly create a basic notion website and upload it wihtin seconds it doesnt need to be anything fancy just a title will do. If you want a professional website after follow my tutorial on [How to Create a Web App](https://blog.woodhamssoftware.com/blog/web-app/create-web-app).**
+
+- A privacy policy page
+
+**To make this go to Notion again, create a new page and call it Privacy Policy. It doesnt need to be filled out initially but it will eventually be checked.**
+
+- A delete your account page
+
+**To make this go to Notion again, create a new page and call it Deleting your Account. It doesnt need to be filled out initially but it will eventually be checked.**
+
+- An app icon 512px x 512px
+- A feature graphic 1024px x 500px
+- Phone Screenshots
+  -  Screenshots must be PNG or JPEG, up to 8 MB each, 16:9 or 9:16 aspect ratio, with each side between 320 px and 3,840 px. Atleast 4.
+- 7 inch Tablet Screenshots
+  -  Screenshots must be PNG or JPEG, up to 8 MB each, 16:9 or 9:16 aspect ratio, with each side between 320 px and 3,840 px. Atleast 4.
+- 10 inch Tablet Screenshots
+  -  Screenshots must be PNG or JPEG, up to 8 MB each, 16:9 or 9:16 aspect ratio, with each side between 320 px and 3,840 px. Atleast 4.
+
+**To make these images and graphics go to Figma or any other editor and make them.**
+
+## 3.3 Create a Testing Track
+
+Once the questions are done (it will be clear if youre missing anything):
+
+Go to Test and Release > Testing > Closed Testing
+
+Go through the processes, add your testers, add all countries etc.
+
+You will get to a point where you need to add 12 testers for your app for 2 weeks. Traditionally you will need to find 12 separate people to sign up to your app, however i have a trick i will share with you.
+
+# 4. Adding 12 testers
+
+The testers are only valid testers by email, google play account and phone. So if you have 2 emails on your phone and log into another Google Play account on your phone it will not work. However by making 12 seperate emails and 12 emulators you can sign up quickly without needing 12 people.
+
+## 4.1 Create a new email
+
+Go to Gmail or your email provider and create a new email account. Call it something repetitive such as tester-101@gmail.com. Make 12 of these so tester101@gmail.com, tester102@gmail.com etc
+
+## 4.2 Android Studio
+
+Open Android Studio > More Actions > Virtual Device Manager
+
+## 4.3 Adding Emulators
+
+To make a new emulator with another account press the + in the top right choose any, maybe one you havent chosen before so its actually good for testing such as a tablet or small phone. Turn it on with the triangle on the right hand side.
+
+## 4.4 In the emulator
+
+Once you are in the emulator go into Google Play Store and log into one of your new emails. Then open Google and type in the app URL and install. This will now count as 1 tester added. Do this 12 times and you will have overcome the 12 person limit.
+
+# 5 After Closed Testing
+
+Once you have 12 testers in your app the 2 week testing period will begin. After 2 weeks you can then upload to Google Play.

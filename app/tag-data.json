@@ -1,6 +1,10 @@
 {
-  "web-app": 1,
-  "website": 1,
-  "nextjs": 1,
-  "how-to": 1
+  "web-app": 2,
+  "website": 2,
+  "nextjs": 2,
+  "how-to": 3,
+  "hosting": 1,
+  "vercel": 1,
+  "mobile-app": 1,
+  "react-native": 1
 }
